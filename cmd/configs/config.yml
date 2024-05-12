@@ -1,0 +1,3 @@
+standardPort: "6200"
+videoPort : "6201"
+ip: "localhost"

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "/video";
+
+service VideoStream {
+    rpc GetVideoFromCamera(ImageRequest) returns ( ImageResponse);
+    rpc StopVideoStream(StopRequest) returns (StopResponse);
+}
+
+message ImageRequest {
+    string ip = 1;
+    string port = 2;
+}
+
+message ImageResponse {
+    string ip = 1;
+    string port = 2;
+    bytes image = 3;
+}
+
+message StopRequest {
+    string ip = 1;
+    string port = 2;
+}
+
+message StopResponse {
+    string ip = 1;
+    string port = 2;
+    bool stopped = 3;
+}

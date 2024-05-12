@@ -1,0 +1,32 @@
+<mxfile host="65bd71144e">
+    <diagram id="dvtfDWsXP6bPdCrrOiSt" name="Страница 1">
+        <mxGraphModel dx="279" dy="411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="AnalyticsService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="80" width="100" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="SHWService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="80" width="100" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="getVideoStream&lt;br&gt;(ip,port)" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;" edge="1" parent="5" target="4">
+                    <mxGeometry x="0.0554" width="60" relative="1" as="geometry">
+                        <mxPoint x="50" y="160" as="sourcePoint"/>
+                        <mxPoint x="110" y="160" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="findAndAddCamera&lt;br&gt;(userID,name.addr)" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;" edge="1" parent="1" source="5" target="4">
+                    <mxGeometry width="60" relative="1" as="geometry">
+                        <mxPoint x="150" y="260" as="sourcePoint"/>
+                        <mxPoint x="210" y="260" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="110" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

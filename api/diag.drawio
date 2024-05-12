@@ -1,0 +1,28 @@
+<mxfile host="65bd71144e">
+    <diagram id="BpQaKSe65Rdrm56Tx5VZ" name="Страница 1">
+        <mxGraphModel dx="1360" dy="447" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="110" width="690" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Сервис аналитики" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="469" width="100" height="51" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Router Scan&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Обработчик видео" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Искатель" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Захватчик видео" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
