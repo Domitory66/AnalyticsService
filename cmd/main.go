@@ -2,15 +2,18 @@ package main
 
 import (
 	gen "AnalyticsService/internal/app/api/camera"
+	"AnalyticsService/internal/app/api/image/prot"
 	"AnalyticsService/internal/app/api/video"
 	"AnalyticsService/internal/app/handler"
 	"AnalyticsService/internal/app/logger"
 	"AnalyticsService/internal/app/repository"
 	"AnalyticsService/internal/app/server"
 	"AnalyticsService/internal/app/service"
+	"context"
 	"fmt"
 	"net"
 	"sync"
+	"time"
 
 	"log/slog"
 	"os"
@@ -18,6 +21,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
@@ -37,16 +41,25 @@ func main() {
 	local := &repository.LocalRepository{}
 	camHandler := &handler.CameraHandler{}
 
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*50)
+	defer cancel()
+	conProcessor, err := grpc.DialContext(ctx, "localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Log.Fatal("Analytics service not started ", err.Error())
+	}
+	clientGestureRecognition := prot.NewImageWorkerClient(conProcessor)
+	videoHandler := &handler.VideoHandler{clientGestureRecognition}
+
 	repos := repository.New(local)
-	handler := handler.New(camHandler)
-	services := service.New(handler, repos)
+	handler := handler.New(camHandler, videoHandler)
+	camService := service.New(handler, repos)
 
 	standLis, err := net.Listen("tcp", viper.GetString("ip")+":"+viper.GetString("standardPort"))
 	if err != nil {
 		log.Log.Fatalf("Error to listen: %v", err.Error())
 	}
 	log.Log.Info("Listen port for work with cameras: ", viper.GetString("standardPort"))
-	server := server.New(services, log)
+	server := server.New(camService, log)
 
 	grpcStandardServer := grpc.NewServer()
 	gen.RegisterCameraWorkerServer(grpcStandardServer, server)
@@ -80,7 +93,6 @@ func main() {
 	}()
 	log.Log.Info("GRPC video server started on: ", viper.GetString("ip"), ":", viper.GetString("videoPort"))
 	fmt.Printf("GRPC video server started on: %s : %s \n", viper.GetString("ip"), viper.GetString("videoPort"))
-	//TODO  Создать сервер для общения с SmartHomeService
 	wg.Wait()
 
 }
