@@ -1,0 +1,18 @@
+syntax = "proto3";
+option go_package = "/prot";
+service ImageWorker{
+  rpc searchGesture(msgImageRequest) returns (msgImageResponse){}
+}
+
+message msgImageRequest{
+int32 user_id = 1;
+string camera_name = 2;
+bytes image = 3;
+}
+
+message msgImageResponse{
+int32 user_id = 1;
+string camera_name = 2;
+string  label = 3;
+bytes image = 4;
+}

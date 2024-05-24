@@ -90,9 +90,15 @@ func (s *serverAPI) GetVideoFromCamera(ctx context.Context, in *video.ImageReque
 	if err != nil {
 		return nil, status.Error(codes.NotFound, err.Error())
 	}
+
 	frame, err := s.Service.Handler.GetVideoFrame(ctx, cam)
 	if err != nil {
 		return nil, status.Error(codes.Aborted, err.Error())
+	}
+
+	frame, _, err = s.Service.Handler.FindGesture(ctx, frame, cam)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
 	}
 	return &video.ImageResponse{Ip: in.Ip, Port: in.Port, Image: frame}, nil
 }

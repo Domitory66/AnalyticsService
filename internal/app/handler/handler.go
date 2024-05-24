@@ -8,6 +8,7 @@ import (
 type VideoWorker interface {
 	FindGesture(
 		ctx context.Context,
+		sendframe []byte,
 		camera *models.Camera,
 	) (frame []byte, typeGesture string, err error)
 }
@@ -32,6 +33,6 @@ type Handler struct {
 	VideoWorker
 }
 
-func New(cw CameraWorker) *Handler {
-	return &Handler{CameraWorker: cw}
+func New(cw CameraWorker, vw VideoWorker) *Handler {
+	return &Handler{CameraWorker: cw, VideoWorker: vw}
 }

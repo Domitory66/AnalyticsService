@@ -23,7 +23,6 @@ func (ch *CameraHandler) FindCamera(ctx context.Context, name string, port strin
 func (ch *CameraHandler) GetVideoFrame(ctx context.Context, cam *models.Camera) (frame []byte, err error) {
 	img := gocv.NewMat()
 	defer img.Close()
-
 	for {
 		cam.Capturer.Read(&img)
 		if img.Empty() {

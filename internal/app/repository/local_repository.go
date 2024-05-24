@@ -16,7 +16,6 @@ func (l *LocalRepository) GetListCameras(ctx context.Context) ([]*models.Camera,
 }
 
 func (l *LocalRepository) GetCameraByPortAndIp(ctx context.Context, port string, ip string) (*models.Camera, error) {
-	fmt.Println(len(l.Repos))
 	for i := range l.Repos {
 		if l.Repos[i].Ip == ip && l.Repos[i].Port == port {
 			return l.Repos[i], nil
